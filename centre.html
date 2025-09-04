@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portes Obertes - Projecte Circulate</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Manrope', sans-serif;
+      background-color: #faf9f6;
+      color: #333;
+    }
+    header {
+      background: #ffffff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 1.5rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .logo img {
+      height: 48px;
+    }
+    .menu-toggle {
+      display: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover {
+      color: #0066cc;
+    }
+    .dropdown {
+      position: relative;
+    }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+      z-index: 1000;
+      min-width: 200px;
+    }
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+    .dropdown-menu a {
+      display: block;
+      padding: 0.8rem 1rem;
+      white-space: nowrap;
+    }
+    main {
+      padding: 2rem 1rem;
+    }
+    footer {
+      background: #333;
+      color: #fff;
+      padding: 2rem 1rem;
+      margin-top: 3rem;
+    }
+    footer .footer-content {
+      max-width: 1200px;
+      margin: auto;
+      text-align: center;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #fff;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        width: 100%;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        padding: 1rem 0;
+      }
+      .nav-links.show {
+        display: flex;
+      }
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+      }
+    }
+  </style>
+  <script>
+    function toggleMenu() {
+      document.getElementById('nav-links').classList.toggle('show');
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <a href="index">
+          <img src="https://i.ibb.co/J9fkhHN/Copia-de-Frame-3-1.png" alt="Logo">
+        </a>
+      </div>
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+      <div class="nav-links" id="nav-links">
+        <a href="intro">Introducció</a>
+        <a href="resulats">Resultats</a>
+        <div class="dropdown">
+          <a href="#">Actuacions</a>
+          <div class="dropdown-menu">
+            <a href="congres">Congrés Científic</a>
+            <a href="centre">Portes Obertes</a>
+            <a href="servei">Servei Comunitari</a>
+            <a href="cloenda">Cloenda Circulate</a>
+            <a href="faig">Fira FAIG</a>
+          </div>
+        </div>
+        <a href="media">Als mitjans</a>
+        <a href="mes">Més Enllà</a>
+        <div class="dropdown">
+          <a href="#">Col·laboradors</a>
+          <div class="dropdown-menu">
+            <a href="https://www.idaea.csic.es/">IDAEA-CSIC</a>
+            <a href="https://www.isglobal.org/">ISGlobal</a>
+            <a href="https://www.lichenis.com">Lichen</a>
+            <a href="https://www.barcelona.cat/">Ajuntament de Barcelona</a>
+            <a href="https://fundacionlacaixa.org/">Fundació La Caixa</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div style="font-family: 'Manrope', sans-serif; background-color: #f2eee1; padding: 3rem 2rem; max-width: 900px; margin: auto; color: #333; border: 1px solid #ccc; border-radius: 12px;">
+      <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 1rem;">Portes Obertes i Prototip de Conscienciació</h2>
+
+      <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem;">
+        Durant les portes obertes del Bernat el Ferrer, el projecte <strong>Circulate</strong> va presentar el prototip creat per conscienciar sobre les partícules de desgast dels pneumàtics. Aquesta presentació va anar dirigida a famílies, docents i futurs alumnes amb l’objectiu de sensibilitzar la comunitat educativa sobre aquesta problemàtica ambiental i de salut.
+      </p>
+
+      <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">
+        El prototip, desenvolupat dins de l’àmbit d’innovació social, es va dissenyar per ser fàcilment transportable, dinàmic i intuïtiu, facilitant que les persones captessin ràpidament la informació. La seva construcció es va fer utilitzant l’aula FAIG, que proporciona material maker per a projectes educatius. Amb l’ajuda d’estudiants i col·laboradors, es va acabar el prototip per a ser presentat a diversos esdeveniments relacionats amb el projecte.
+      </p>
+
+      <div style="border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); margin-bottom: 2rem;">
+        <img src="https://i.ibb.co/RkXHkK2y/Copia-de-DSC02320.jpg" alt="Prototip Circulate" style="width: 100%; display: block; object-fit: cover;">
+      </div>
+
+      <p style="font-size: 1.1rem; line-height: 1.6;">
+        Aquesta eina ha estat clau per apropar la ciència ciutadana a la població, fent més accessible i entenedora la problemàtica de les partícules de desgast dels pneumàtics.
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>© 2025 Projecte CIRCULATE — Tots els drets reservats.</p>
+      <p>Amb el suport de l’Ajuntament de Barcelona i la Fundació La Caixa.</p>
+    </div>
+  </footer>
+</body>
+</html>
