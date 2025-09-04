@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Circulate - Introducció</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main-bg: #f2eee1;
+      --primary: #333;
+      --accent: #ccc;
+      --card-bg: white;
+      --footer-bg: #222;
+      --footer-text: #ddd;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body, html {
+      font-family: 'Manrope', sans-serif;
+      background-color: var(--main-bg);
+      color: var(--primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* NAVBAR */
+    header {
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+    }
+
+    nav .logo img {
+      height: 50px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #666;
+    }
+
+    /* Dropdown */
+    .dropdown { position: relative; }
+
+    .dropdown > a::after {
+      content: "▼";
+      font-size: 0.7rem;
+      margin-left: 5px;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 120%;
+      left: 0;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: none;
+      flex-direction: column;
+      min-width: 200px;
+    }
+
+    .dropdown-menu a {
+      padding: 0.75rem 1rem;
+      color: var(--primary);
+      white-space: nowrap;
+    }
+
+    .dropdown-menu a:hover { background: #f5f5f5; }
+
+    .dropdown:hover .dropdown-menu { display: flex; }
+
+    /* Mobile */
+    .menu-toggle { display: none; cursor: pointer; font-size: 1.5rem; }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        background: white;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+        width: 70%;
+        height: calc(100% - 70px);
+        transition: right 0.3s ease;
+      }
+
+      .nav-links.active { right: 0; }
+
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        background: #fafafa;
+      }
+
+      .menu-toggle { display: block; }
+    }
+
+    /* Footer */
+    footer {
+      margin-top: auto;
+      background: var(--footer-bg);
+      color: var(--footer-text);
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+    /* Intro section */
+    .intro-container {
+      font-family: 'Manrope', sans-serif;
+      background-color: #f2eee1;
+      padding: 2rem;
+      border-radius: 16px;
+      max-width: 1000px;
+      margin: 2rem auto;
+      color: #333;
+    }
+
+    .intro-container h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .intro-container p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .video-grid {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .video-grid div {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .video-grid iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    @media (max-width: 768px) {
+      .video-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <a href="pbfedu.github.io/circulate">
+          <img src="https://i.ibb.co/J9fkhHN/Copia-de-Frame-3-1.png" alt="Logo">
+        </a>
+      </div>
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+      <div class="nav-links" id="nav-links">
+        <a href="pbfedu.github.io/circulate/intro">Introducció</a>
+        <a href="pbfedu.github.io/circulate/resultats">Resultats</a>
+        <div class="dropdown">
+          <a href="#">Actuacions</a>
+          <div class="dropdown-menu">
+            <a href="pbfedu.github.io/circulate/congres">Congrés Científic</a>
+            <a href="pbfedu.github.io/circulate/centre">Portes Obertes</a>
+            <a href="pbfedu.github.io/circulate/servei">Servei Comunitari</a>
+            <a href="pbfedu.github.io/circulate/cloenda">Cloenda Circulate</a>
+            <a href="pbfedu.github.io/circulate/faig">Fira FAIG</a>
+          </div>
+        </div>
+        <a href="pbfedu.github.io/circulate/media">Als mitjans</a>
+        <a href="pbfedu.github.io/circulate/mes">Més Enllà</a>
+        <div class="dropdown">
+          <a href="#">Col·laboradors</a>
+          <div class="dropdown-menu">
+            <a href="https://www.idaea.csic.es/">IDAEA-CSIC</a>
+            <a href="https://www.isglobal.org/">ISGlobal</a>
+            <a href="https://www.lichenis.com">Lichen</a>
+            <a href="https://www.barcelona.cat/">Ajuntament de Barcelona</a>
+            <a href="https://fundacionlacaixa.org/">Fundació La Caixa</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="intro-container">
+      <h2>Què és el projecte CIRCULATE?</h2>
+      <p>El projecte <strong>CIRCULATE</strong> pretén avaluar l'exposició humana a partícules de desgast dels pneumàtics (PDPs) mitjançant la <strong>Ciència Ciutadana</strong> i la <strong>Innovació Social</strong>.</p>
+      <p>Neix a partir d’una iniciativa de l’<strong>IDAEA-CSIC</strong> l’any 2022, quan el Dr. Nicola Montemurro va començar a analitzar els additius del cautxú dels pneumàtics (ACPs) i els seus productes de transformació (PTs) en mostres ambientals d’aigua. Juntament amb la investigadora Mercè Garí, van donar lloc al projecte <em>TRÀNSIT</em> al Delta del Llobregat. Més endavant, l’interès per portar aquesta recerca a l’entorn urbà i avaluar l’exposició de la població va desembocar en el naixement de <strong>CIRCULATE</strong>.</p>
+      <p>Amb el suport de l’<strong>Ajuntament de Barcelona</strong> i la <strong>Fundació La Caixa</strong>, i la col·laboració d’entitats com <strong>ISGlobal</strong> i <strong>LICHEN</strong>, el projecte es desplega a diferents punts de l’<strong>Àrea Metropolitana de Barcelona</strong>, com <strong>Molins de Rei</strong> i <strong>Badalona</strong>.</p>
+
+      <div class="video-grid">
+        <div>
+          <iframe src="https://www.youtube.com/embed/kJ6DJM03GLw" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div>
+          <iframe src="https://www.youtube.com/embed/Pd392BMCw6o" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 Pau Batista Fernández i Amanda Isabel García Maldonado - Institut Bernat el Ferrer
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("nav-links").classList.toggle("active");
+    }
+  </script>
+</body>
+</html>
