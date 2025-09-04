@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Circulate - Congrés Científic</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main-bg: #f2eee1;
+      --primary: #333;
+      --accent: #ccc;
+      --footer-bg: #222;
+      --footer-text: #ddd;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body, html {
+      font-family: 'Manrope', sans-serif;
+      background-color: var(--main-bg);
+      color: var(--primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* NAVBAR */
+    header {
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+    }
+
+    nav .logo img { height: 50px; }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover { color: #666; }
+
+    /* Dropdown */
+    .dropdown { position: relative; }
+
+    .dropdown > a::after {
+      content: "▼";
+      font-size: 0.7rem;
+      margin-left: 5px;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 120%;
+      left: 0;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: none;
+      flex-direction: column;
+      min-width: 200px;
+    }
+
+    .dropdown-menu a {
+      padding: 0.75rem 1rem;
+      color: var(--primary);
+      white-space: nowrap;
+    }
+
+    .dropdown-menu a:hover { background: #f5f5f5; }
+
+    .dropdown:hover .dropdown-menu { display: flex; }
+
+    /* Mobile */
+    .menu-toggle { display: none; cursor: pointer; font-size: 1.5rem; }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        background: white;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+        width: 70%;
+        height: calc(100% - 70px);
+        transition: right 0.3s ease;
+      }
+
+      .nav-links.active { right: 0; }
+
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        background: #fafafa;
+      }
+
+      .menu-toggle { display: block; }
+    }
+
+    /* Footer */
+    footer {
+      margin-top: auto;
+      background: var(--footer-bg);
+      color: var(--footer-text);
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+    /* Content */
+    .content-container {
+      background-color: #f2eee1;
+      padding: 2.5rem;
+      border-radius: 16px;
+      max-width: 1000px;
+      margin: 2rem auto;
+      color: #333;
+    }
+
+    .content-container h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+    }
+
+    .content-container h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .content-container p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .poster, .gallery img {
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+
+    .poster-container {
+      position: relative;
+      padding-bottom: 140%;
+      height: 0;
+      overflow: hidden;
+      margin: 1rem 0 2.5rem;
+    }
+
+    .poster-container img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery img {
+      width: 100%;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <a href="index">
+          <img src="https://i.ibb.co/J9fkhHN/Copia-de-Frame-3-1.png" alt="Logo">
+        </a>
+      </div>
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+      <div class="nav-links" id="nav-links">
+        <a href="intro">Introducció</a>
+        <a href="resulats">Resultats</a>
+        <div class="dropdown">
+          <a href="#">Actuacions</a>
+          <div class="dropdown-menu">
+            <a href="congres">Congrés Científic</a>
+            <a href="centre">Portes Obertes</a>
+            <a href="servei">Servei Comunitari</a>
+            <a href="cloenda">Cloenda Circulate</a>
+            <a href="faig">Fira FAIG</a>
+          </div>
+        </div>
+        <a href="media">Als mitjans</a>
+        <a href="mes">Més Enllà</a>
+        <div class="dropdown">
+          <a href="#">Col·laboradors</a>
+          <div class="dropdown-menu">
+            <a href="https://www.idaea.csic.es/">IDAEA-CSIC</a>
+            <a href="https://www.isglobal.org/">ISGlobal</a>
+            <a href="https://www.lichenis.com">Lichen</a>
+            <a href="https://www.barcelona.cat/">Ajuntament de Barcelona</a>
+            <a href="https://fundacionlacaixa.org/">Fundació La Caixa</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="content-container">
+      <h2>CIRCULATE al Congrés Científic</h2>
+      <p>Per compartir els primers resultats del projecte <strong>CIRCULATE</strong>, un grup d'alumnes va preparar dos pòsters científics que es van presentar al <strong>Congrés Científic</strong> de l’institut, un esdeveniment que fa més de quatre anys que celebra l’equip de projectes de 3r d’ESO. L’exposició es va fer davant de famílies, alumnat de diferents cursos, investigadors convidats i estudiants del batxillerat biomèdic.</p>
+      <p>Aquesta edició del congrés estava dedicada a les <strong>malalties respiratòries</strong>, una temàtica molt vinculada als objectius del nostre projecte. L’ocasió va ser ideal per mostrar públicament els dos pòsters de recerca i també el prototip desenvolupat.</p>
+      
+      <hr style="border: none; border-top: 1px solid #ccc; margin: 2rem 0;">
+
+      <h3>1. Pòster sobre concentració de partícules a l’aire</h3>
+      <p>Aquest pòster visualitza la quantitat de partícules contaminants presents en l’entorn. Per recollir aquestes dades es van fer servir eines com l’<em>Atmotube</em>, el <em>Smart Citizen Kit</em> i també <strong>pegats de silicona</strong> situats en diferents punts de Molins de Rei. Els resultats mostren les concentracions estimades de partícules als espais quotidians.</p>
+      <div class="poster-container">
+        <img src="https://i.ibb.co/hx1dZMzq/Quantificaci-de-part-cules-de-desgast-de-pneum-tics-PDPs-en-el-nostre-entorn-l-institut-i-Molins-de.png" alt="Pòster Partícules a l'Aire">
+      </div>
+
+      <h3>2. Pòster sobre exposició del cos a les PDP</h3>
+      <p>En aquest segon pòster es mostra com les partícules poden arribar a entrar al cos humà. L’equip va analitzar <strong>mostres d’orina</strong> i <strong>braçalets de silicona</strong>, que acumulen partícules ambientals. Aquest estudi permet estimar el grau d’exposició personal i els possibles efectes en la salut.</p>
+      <div class="poster-container">
+        <img src="https://i.ibb.co/DPbJJpwZ/Impacte-de-les-Part-cules-de-Desgast-de-Pneum-tics-en-la-Salut-Humana-Quantificaci-i-Exposici.png" alt="Pòster Exposició Humana a PDP">
+      </div>
+
+      <hr style="border: none; border-top: 1px solid #ccc; margin: 2rem 0;">
+
+      <h3>Moments de l’activitat</h3>
+      <p>Durant el congrés es van viure moments intensos de comunicació, presentació i intercanvi amb tota la comunitat educativa. Aquí en podeu veure una mostra:</p>
+      <div class="gallery">
+        <img src="https://i.ibb.co/s9yx4rBM/Circulate-Congr-s.jpg" alt="Presentació 1">
+        <img src="https://i.ibb.co/j71jJkj/Circulate-Congr-s-Esquena.jpg" alt="Presentació 2">
+        <img src="https://i.ibb.co/p6Nkx50d/Circulate-Congr-s-Gen-ric.jpg" alt="Presentació 3">
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 Pau Batista Fernández i Amanda Isabel García Maldonado - Institut Bernat el Ferrer
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("nav-links").classList.toggle("active");
+    }
+  </script>
+</body>
+</html>
