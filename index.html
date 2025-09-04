@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projecte Circulate - Bernat el Ferrer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main-bg: #f2eee1;
+      --primary: #333;
+      --accent: #ccc;
+      --card-bg: white;
+      --footer-bg: #222;
+      --footer-text: #ddd;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body, html {
+      font-family: 'Manrope', sans-serif;
+      background-color: var(--main-bg);
+      color: var(--primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* NAVBAR */
+    header {
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+    }
+
+    nav .logo img { height: 50px; }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover { color: #666; }
+
+    /* Dropdown */
+    .dropdown { position: relative; }
+
+    .dropdown > a::after {
+      content: "▼";
+      font-size: 0.7rem;
+      margin-left: 5px;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 120%;
+      left: 0;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: none;
+      flex-direction: column;
+      min-width: 200px;
+    }
+
+    .dropdown-menu a {
+      padding: 0.75rem 1rem;
+      color: var(--primary);
+      white-space: nowrap;
+    }
+
+    .dropdown-menu a:hover { background: #f5f5f5; }
+
+    .dropdown:hover .dropdown-menu { display: flex; }
+
+    /* Mobile */
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        background: white;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+        width: 70%;
+        height: calc(100% - 70px);
+        transition: right 0.3s ease;
+      }
+
+      .nav-links.active { right: 0; }
+
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        background: #fafafa;
+      }
+
+      .menu-toggle { display: block; }
+    }
+
+    /* Banner institucional */
+    .banner {
+      background-color: #f9f9f9;
+      padding: 20px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      border-top: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 10px;
+    }
+
+    .section h3 { margin-bottom: 10px; }
+
+    .logos {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .logos img {
+      max-height: 60px;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .logos img:hover { transform: scale(1.1); }
+
+    /* Particle banner */
+    #banner {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      background: var(--main-bg);
+    }
+
+    #banner canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    #banner img#center-logo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 300px;
+      z-index: 2;
+    }
+
+    #banner img#bottom-logo {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 120px;
+      z-index: 2;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: auto;
+      background: var(--footer-bg);
+      color: var(--footer-text);
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="https://i.ibb.co/J9fkhHN/Copia-de-Frame-3-1.png" alt="Logo">
+      </div>
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+      <div class="nav-links" id="nav-links">
+        <a href="pbfedu.github.io/circulate/intro">Introducció</a>
+        <a href="pbfedu.github.io/circulate/resulats">Resultats</a>
+        <div class="dropdown">
+          <a href="#">Actuacions</a>
+          <div class="dropdown-menu">
+            <a href="pbfedu.github.io/circulate/congres">Congrés Científic</a>
+            <a href="pbfedu.github.io/circulate/centre">Portes Obertes</a>
+            <a href="pbfedu.github.io/circulate/servei">Servei Comunitari</a>
+            <a href="pbfedu.github.io/circulate/cloenda">Cloenda Circulate</a>
+            <a href="pbfedu.github.io/circulate/faig">Fira FAIG</a>
+          </div>
+        </div>
+        <a href="pbfedu.github.io/circulate/media">Als mitjans</a>
+        <a href="pbfedu.github.io/circulate/mes">Més Enllà</a>
+        <div class="dropdown">
+          <a href="#">Col·laboradors</a>
+          <div class="dropdown-menu">
+            <a href="https://www.idaea.csic.es/">IDAEA-CSIC</a>
+            <a href="https://www.isglobal.org/">ISGlobal</a>
+            <a href="https://www.lichenis.com">Lichen</a>
+            <a href="https://www.barcelona.cat/">Ajuntament de Barcelona</a>
+            <a href="https://fundacionlacaixa.org/">Fundació La Caixa</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="banner">
+      <canvas id="particles"></canvas>
+      <img id="center-logo" src="https://i.ibb.co/J9fkhHN/Copia-de-Frame-3-1.png" alt="Logo principal">
+      <img id="bottom-logo" src="https://i.ibb.co/xt4Yv4PH/image.png" alt="Logo inferior">
+    </section>
+
+    <section style="padding: 3rem; text-align:center;">
+      <h1>Parlem de les partícules de desgast dels pneumàtics</h1>
+      <p style="margin-top:1rem; max-width:700px; margin-inline:auto;">
+        Benvingut a la pàgina web del Projecte Circulate al Bernat el Ferrer. En proves...
+      </p>
+    </section>
+
+    <div class="banner">
+      <div class="section">
+        <h3>Impulsat per</h3>
+        <div class="logos">
+          <img src="https://www.idaea.csic.es/wp-content/uploads/2021/06/logo_IDAEA.png" alt="IDAEA Logo">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Logotipo_del_CSIC.svg/2560px-Logotipo_del_CSIC.svg.png" alt="CSIC Logo">
+          <img src="https://magnet.cat/wp-content/uploads/2022/09/ISGlobal_color_fondo-blanco-1.png" alt="ISGlobal Logo">
+          <img src="https://images.squarespace-cdn.com/content/v1/650c6d1feb212254f2bd5a54/9ea40071-1dcf-4356-80d9-d3db370fb231/lichen_logo_horizontal_color.png?format=1500w" alt="Lichen Logo">
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Amb el suport de</h3>
+        <div class="logos">
+          <img src="https://i.ibb.co/hFrf5Z1g/image.png" alt="Suport Logo">
+          <img src="https://innicia.org/wp-content/uploads/2023/04/logo-funfacion-caixa.png" alt="Fundació Caixa Logo">
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 Pau Batista Fernández i Amanda Isabel García Maldonado - Institut Bernat el Ferrer
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("nav-links").classList.toggle("active");
+    }
+
+    // Particles animation
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let particlesArray = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight * 0.9;
+      initParticles();
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    const mouse = { x: null, y: null, radius: 100 };
+    window.addEventListener('mousemove', e => {
+      mouse.x = e.x;
+      mouse.y = e.y;
+    });
+
+    class Particle {
+      constructor(x, y, dx, dy, size, color) {
+        this.x = x;
+        this.y = y;
+        this.dx = dx;
+        this.dy = dy;
+        this.size = size;
+        this.color = color;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+      }
+      update() {
+        let dx = mouse.x - this.x;
+        let dy = mouse.y - this.y;
+        let distance = Math.sqrt(dx*dx + dy*dy);
+        if (distance < mouse.radius && distance > 0) {
+          const forceDirectionX = dx / distance;
+          const forceDirectionY = dy / distance;
+          const maxDistance = mouse.radius;
+          const force = (maxDistance - distance) / maxDistance;
+          this.dx -= forceDirectionX * force * 1.5;
+          this.dy -= forceDirectionY * force * 1.5;
+        }
+        this.x += this.dx;
+        this.y += this.dy;
+        if (this.x > canvas.width || this.x < 0) this.dx *= -0.8;
+        if (this.y > canvas.height || this.y < 0) this.dy *= -0.8;
+        this.draw();
+      }
+    }
+
+    function initParticles() {
+      particlesArray = [];
+      for (let i = 0; i < 150; i++) {
+        const size = Math.random() * 3 + 1;
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+        const dx = (Math.random() - 0.5) * 0.3;
+        const dy = (Math.random() - 0.5) * 0.3;
+        const color = `rgba(0,0,0,${Math.random()})`;
+        particlesArray.push(new Particle(x, y, dx, dy, size, color));
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let particle of particlesArray) particle.update();
+      requestAnimationFrame(animate);
+    }
+
+    initParticles();
+    animate();
+  </script>
+</body>
+</html>
