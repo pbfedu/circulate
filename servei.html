@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servei Comunitari - Projecte Circulate</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Manrope', sans-serif;
+      background-color: #faf9f6;
+      color: #333;
+    }
+    header {
+      background: #ffffff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 1.5rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .logo img {
+      height: 48px;
+    }
+    .menu-toggle {
+      display: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover {
+      color: #0066cc;
+    }
+    .dropdown {
+      position: relative;
+    }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+      z-index: 1000;
+      min-width: 200px;
+    }
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+    .dropdown-menu a {
+      display: block;
+      padding: 0.8rem 1rem;
+      white-space: nowrap;
+    }
+    main {
+      padding: 2rem 1rem;
+    }
+    footer {
+      background: #333;
+      color: #fff;
+      padding: 2rem 1rem;
+      margin-top: 3rem;
+    }
+    footer .footer-content {
+      max-width: 1200px;
+      margin: auto;
+      text-align: center;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #fff;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        width: 100%;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        padding: 1rem 0;
+      }
+      .nav-links.show {
+        display: flex;
+      }
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+      }
+    }
+  </style>
+  <script>
+    function toggleMenu() {
+      document.getElementById('nav-links').classList.toggle('show');
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <a href="index">
+          <img src="https://i.ibb.co/J9fkhHN/Copia-de-Frame-3-1.png" alt="Logo">
+        </a>
+      </div>
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+      <div class="nav-links" id="nav-links">
+        <a href="intro">Introducció</a>
+        <a href="resulats">Resultats</a>
+        <div class="dropdown">
+          <a href="#">Actuacions</a>
+          <div class="dropdown-menu">
+            <a href="congres">Congrés Científic</a>
+            <a href="centre">Portes Obertes</a>
+            <a href="servei">Servei Comunitari</a>
+            <a href="cloenda">Cloenda Circulate</a>
+            <a href="faig">Fira FAIG</a>
+          </div>
+        </div>
+        <a href="media">Als mitjans</a>
+        <a href="mes">Més Enllà</a>
+        <div class="dropdown">
+          <a href="#">Col·laboradors</a>
+          <div class="dropdown-menu">
+            <a href="https://www.idaea.csic.es/">IDAEA-CSIC</a>
+            <a href="https://www.isglobal.org/">ISGlobal</a>
+            <a href="https://www.lichenis.com">Lichen</a>
+            <a href="https://www.barcelona.cat/">Ajuntament de Barcelona</a>
+            <a href="https://fundacionlacaixa.org/">Fundació La Caixa</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div style="font-family: 'Manrope', sans-serif; background-color: #f2eee1; padding: 3rem 2rem; max-width: 900px; margin: auto; color: #333; border: 1px solid #ccc; border-radius: 12px;">
+      <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 1rem;">Servei Comunitari</h2>
+
+      <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem;">
+        Per a realitzar el seguiment del servei comunitari de <strong>Circulate</strong>, vam visitar, en col·laboració amb altres companys que també realitzen el seu PR del projecte, algunes de les jornades en què s'estaven duent a terme les presentacions a les escoles Castell Ciuró i La Sínia, ambdues públiques i situades a Molins de Rei.
+      </p>
+
+      <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem;">
+        Durant aquestes visites, vam observar diferències destacables entre les dues escoles: a La Sínia, els familiars i assistents mostraven més interès, es movien més, feien preguntes i estaven més atents, mentre que al Castell Ciuró la majoria dels familiars venien a recollir els seus fills en cotxe i no es quedaven a conèixer la problemàtica que s’exposava.
+      </p>
+
+      <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">
+        Tot i això, a ambdues escoles els infants mostraven molta curiositat i ganes de conèixer què era aquell prototip: volien que els expliquéssim què fèiem, què havíem fet i què anàvem a fer. L’activitat que més els interessava era la de les pilotes, on després d’una explicació adaptada, els nens i nenes llençaven les pilotes de manera interactiva. L’activitat dels gomets o xinxetes va ser menys popular, probablement per la complexitat d’algunes preguntes o per l’alçada a la qual es disposaven.
+      </p>
+
+      <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem; font-style: italic;">
+        A més, dins de l'actuació del servei comunitari s'inclou la presentació realitzada a la cloenda del servei, on es va exposar tot el projecte davant de més famílies i es va explicar com es va dur a terme el servei comunitari. També vam tenir la primera trobada amb l'Alcalde de Molins de Rei, Xavi Paz, i el Regidor d'Educació i Medi Ambient, Lucas Ferro.
+      </p>
+
+      <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+        <div style="flex: 1; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+          <img src="https://i.ibb.co/C3d1RrR6/Un-any-m-s-a-punt-d-acabar-el-curs-donem-per-acabat-el-Servei-Comunitari-El-curs-vinent-torn.jpg" alt="Servei Comunitari Circulate 1" style="width: 100%; display: block; object-fit: cover;">
+        </div>
+        <div style="flex: 1; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+          <img src="https://i.ibb.co/wrrtkmsC/IMG-5661.jpg" alt="Servei Comunitari Circulate 2" style="width: 100%; display: block; object-fit: cover;">
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>© 2025 Pau Batista Fernández i Amanda Isabel García Maldonado - Institut Bernat el Ferrer</p> 
+    </div>
+  </footer>
+</body>
+</html>
