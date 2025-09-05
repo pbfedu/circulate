@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloenda Circulate - Projecte Circulate</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Manrope', sans-serif;
+      background-color: #faf9f6;
+      color: #333;
+    }
+    header {
+      background: #ffffff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 1.5rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .logo img {
+      height: 48px;
+    }
+    .menu-toggle {
+      display: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover {
+      color: #0066cc;
+    }
+    .dropdown {
+      position: relative;
+    }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+      z-index: 1000;
+      min-width: 200px;
+    }
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+    .dropdown-menu a {
+      display: block;
+      padding: 0.8rem 1rem;
+      white-space: nowrap;
+    }
+    main {
+      padding: 2rem 1rem;
+    }
+    footer {
+      background: #333;
+      color: #fff;
+      padding: 2rem 1rem;
+      margin-top: 3rem;
+    }
+    footer .footer-content {
+      max-width: 1200px;
+      margin: auto;
+      text-align: center;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #fff;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        width: 100%;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        padding: 1rem 0;
+      }
+      .nav-links.show {
+        display: flex;
+      }
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+      }
+    }
+  </style>
+  <script>
+    function toggleMenu() {
+      document.getElementById('nav-links').classList.toggle('show');
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <a href="index">
+          <img src="https://i.ibb.co/J9fkhHN/Copia-de-Frame-3-1.png" alt="Logo">
+        </a>
+      </div>
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+      <div class="nav-links" id="nav-links">
+        <a href="intro">Introducció</a>
+        <a href="resulats">Resultats</a>
+        <div class="dropdown">
+          <a href="#">Actuacions</a>
+          <div class="dropdown-menu">
+            <a href="congres">Congrés Científic</a>
+            <a href="centre">Portes Obertes</a>
+            <a href="servei">Servei Comunitari</a>
+            <a href="cloenda">Cloenda Circulate</a>
+            <a href="faig">Fira FAIG</a>
+          </div>
+        </div>
+        <a href="media">Als mitjans</a>
+        <a href="mes">Més Enllà</a>
+        <div class="dropdown">
+          <a href="#">Col·laboradors</a>
+          <div class="dropdown-menu">
+            <a href="https://www.idaea.csic.es/">IDAEA-CSIC</a>
+            <a href="https://www.isglobal.org/">ISGlobal</a>
+            <a href="https://www.lichenis.com">Lichen</a>
+            <a href="https://www.barcelona.cat/">Ajuntament de Barcelona</a>
+            <a href="https://fundacionlacaixa.org/">Fundació La Caixa</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div style="font-family: 'Manrope', sans-serif; background-color: #f2eee1; padding: 3rem 2rem; max-width: 900px; margin: auto; color: #333; border: 1px solid #ccc; border-radius: 12px;">
+      <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 1rem;">Cloenda Circulate</h2>
+
+      <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem;">
+        El 29 d’abril, a les instal·lacions de l’<strong>IDAEA-CSIC</strong> de Barcelona, es va celebrar la cloenda del projecte <strong>Circulate</strong>, un esdeveniment que va comptar amb la presència de les entitats responsables, com <strong>ISGlobal</strong> i <strong>Lichen</strong>, així com d’altres convidats vinculats a diferents àmbits del projecte, que van participar en una taula rodona.
+      </p>
+
+      <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">
+        Durant la cloenda es va dur a terme una presentació on es van exposar els continguts treballats, la metodologia seguida, les preguntes de recerca i unes conclusions preliminars del projecte. A més, es van mostrar els pòsters científics, el prototip desenvolupat, fotografies rellevants i altres eines de difusió, que van ajudar a fer més comprensible i visual el treball realitzat.
+      </p>
+
+      <div style="border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); margin-bottom: 2rem;">
+        <img src="https://i.ibb.co/4cck0hX/IMG-5566.jpg" alt="Cloenda Circulate" style="width: 100%; display: block; object-fit: cover;">
+      </div>
+    </div>
+  </main>
+
+    <footer>
+    <div class="footer-content">
+      <p>© 2025 Pau Batista Fernández i Amanda Isabel García Maldonado - Institut Bernat el Ferrer</p> 
+    </div>
+  </footer>
+</body>
+</html>
